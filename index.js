@@ -46,7 +46,7 @@ let topTenMovies = [
         title: 'Good Time'
     },
     {
-        title: 'The Matrix'
+        title: 'American Psycho'
     },
     {
         title: 'The Joker'
