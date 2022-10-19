@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie REST API Documentation</title>
+    <title>MyFlix REST API Documentation</title>
     <link rel="stylesheet" href="style.css">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -20,7 +20,7 @@
     </p>
 
     <table class="table table-striped">
-        <thead class="thead-light">
+        <thead class="thead-dark">
             <tr>
 
                 <th scope="col">Business Logic</th>
@@ -70,7 +70,7 @@
             <tr>
                 <td>
                     Return data about a genre (description) by name/title (e.g., “Thriller”)</td>
-                <td>/movies/[genre]/[genreName]</td>
+                <td>/movies/[genres]/[genreName]</td>
                 <td>GET</td>
                 <td>None</td>
                 <td>
@@ -143,10 +143,17 @@
             </tr>
             <tr>
                 <td>Allow users to add a movie to their list of favorites</td>
-                <td>/users/[id]/[movieTitle]</td>
+                <td>/users/[id]/[movies]/[movieID]</td>
                 <td>POST</td>
                 <td>A JSON object holding data about the movie to add to list of favorites</td>
                 <td>A text message indicating that a movie has been added </td>
+            </tr>
+            <tr>
+                <td>Allow users to remove a movie from their list of favorites</td>
+                <td>/users/[id]/[movies]/[movieID]</td>
+                <td>DELETE</td>
+                <td>None</td>
+                <td>A text message indicating that a movie has been deleted </td>
             </tr>
             <tr>
                 <td>Allow existing users to deregister</td>
