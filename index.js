@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 app.get('/movies', (req, res) => {
     Movies.find()
         .then((movies) => {
-            res.status(201).json(movies);
+            res.status(200).json(movies);
         })
         .catch((err) => {
             console.error(err);
@@ -47,7 +47,7 @@ app.get('/movies', (req, res) => {
 app.get('/movies/:Title', (req, res) => {
     Movies.findOne({ Title: req.params.Title })
         .then((movie) => {
-            res.status(201).json(movie);
+            res.status(200).json(movie);
         })
         .catch((err) => {
             console.error(err);
@@ -59,7 +59,7 @@ app.get('/movies/:Title', (req, res) => {
 app.get('/movies/genres/:Name', (req, res) => {
     Movies.findOne({ 'Genre.Name': req.params.Name })
         .then((movies) => {
-            res.status(201).send(movies.Genre);
+            res.status(200).send(movies.Genre);
         })
         .catch((err) => {
             console.error(err);
@@ -71,7 +71,7 @@ app.get('/movies/genres/:Name', (req, res) => {
 app.get('/movies/directors/:Name', (req, res) => {
     Movies.findOne({ 'Director.Name': req.params.Name })
         .then((movies) => {
-            res.status(201).send(movies.Director);
+            res.status(200).send(movies.Director);
         })
         .catch((err) => {
             console.error(err);
@@ -83,7 +83,7 @@ app.get('/movies/directors/:Name', (req, res) => {
 app.get('/users', (req, res) => {
     Users.find()
         .then((users) => {
-            res.status(201).json(users);
+            res.status(200).json(users);
         })
         .catch((err) => {
             console.error(err);
