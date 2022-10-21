@@ -1,6 +1,5 @@
 const express = require('express'),
     bodyParser = require('body-parser'),
-    cors = require('cors'),
     authRoutes = require('./routes/auth-routes'),
     keys = require('./keys'),
     uuid = require('uuid'),
@@ -23,6 +22,7 @@ mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const cors = require('cors');
 app.use(cors());
 
 // set up routes
