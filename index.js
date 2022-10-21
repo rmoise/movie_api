@@ -1,7 +1,5 @@
 const express = require('express'),
     bodyParser = require('body-parser'),
-    authRoutes = require('./routes/auth-routes'),
-    keys = require('./keys'),
     uuid = require('uuid'),
     morgan = require('morgan'),
     // import built in node modules fs and path
@@ -25,13 +23,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const cors = require('cors');
 app.use(cors());
 
-// set up routes
-app.use('/auth', authRoutes);
+
 
 let auth = require('./auth')(app);
 const passport = require('passport');
 require('./passport');
-
 // create a write stream (in append mode)
 // a ‘log.txt’ file is created in root directory
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), { flags: 'a' });
