@@ -64,7 +64,7 @@ passport.use(
             // options for google strategy
             clientID: keys.google.clientID,
             clientSecret: keys.google.clientSecret,
-            callbackURL: 'https://localhost:8080/auth/google/redirect'
+            callbackURL: '/auth/google/redirect'
         },
         (accessToken, refreshToken, profile, done) => {
             // check if user already exists in our own db
