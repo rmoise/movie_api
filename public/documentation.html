@@ -19,7 +19,7 @@
         their favorite movies.
     </p>
 
-    <table class="table table-striped">
+    <table class="table table-bordered table-striped">
         <thead class="thead-dark">
             <tr>
 
@@ -33,19 +33,26 @@
         </thead>
         <tbody>
             <tr>
-                <td>Return a list of ALL movies to the user</td>
+                <td>Display Welcome Page to the user</td>
+                <td>/</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>A text message welcoming the user</td>
+            </tr>
+            <tr>
+                <td>Get the list of all movies</td>
                 <td>/movies</td>
                 <td>GET</td>
                 <td>None</td>
-                <td>A JSON object holding data about all movies</td>
+                <td>JSON object containing data about all movies (ID, Title, Genre, Director, Description, Featured, imgUrl)</td>
             </tr>
             <tr>
-                <td>Return data (description, genre, director, image URL, whether it’s featured or not) about a single movie by title to the user</td>
-                <td>/movies/[movieTitle]</td>
+                <td>Get the data about a movie by title</td>
+                <td>/movie/:title</td>
                 <td>GET</td>
                 <td>None</td>
                 <td>
-                    A JSON object holding data about a single movie, containing the title, description, genre, director, image URL, and whether it's featured or not. For example:
+                    A JSON object containing data about a single movie by name (ID, Title, Genre, Director, Description, Featured, imgUrl) For example:
                     <pre>
                       <code>
                     {
@@ -69,65 +76,107 @@
             </tr>
             <tr>
                 <td>
-                    Return data about a genre (description) by name/title (e.g., “Thriller”)</td>
-                <td>/movies/[genres]/[genreName]</td>
+                    Get the list of all genres</td>
+                <td>/genres</td>
                 <td>GET</td>
                 <td>None</td>
                 <td>
-                    A JSON object holding data about a genre, containing the name and description. For example:
+                    A JSON object containing data about all genres (ID, Name, Description)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Get the data about a genre by name</td>
+                <td>/genres/:name</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>
+                    A JSON object containing data about genre by name (ID, Name, Description) For example:
                     <pre>
-                     <code>
-                     "Genre": {
-                     "Name": "Thriller",
-                     "Description": "Lorem ipsum..."
-                    }
-                    </code>
-                    </pre>
+                                             <code>
+                                             "Genre": {
+                                             "Name": "Thriller",
+                                             "Description": "Lorem ipsum..."
+                                            }
+                                            </code>
+                                            </pre>
 
                 </td>
             </tr>
             <tr>
-                <td>Return data about a director (bio, birth year, death year) by name</td>
-                <td>/movies/[directors]/[directorName]</td>
+                <td>Get the list of all directors</td>
+                <td>/directors</td>
                 <td>GET</td>
                 <td>None</td>
                 <td>
-                    A JSON object holding data about a director, containing the name, bio, birth year, and death yea. For example:
-                    <pre>
-                    <code>
-                    "Director": {
-                    "Name": "John Doe",
-                    "Bio": "Lorem ipsum...",
-                    "Birth": 1969
-                    {
-                    </code>
-                    </pre>
+                    A JSON object containing data about all directors (ID, Name, Bio, Birth)
                 </td>
-
-
             </tr>
             <tr>
-                <td>Allow new users to register</td>
+                <td>Get the data about one director by name</td>
+                <td>/directors/:name</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>
+                    A JSON object containing data about a director by name (ID, Name, Bio, Birth) For example:
+                    <pre>
+                                <code>
+                                "Director": {
+                                "Name": "John Doe",
+                                "Bio": "Lorem ipsum...",
+                                "Birth": 1969
+                                {
+                                </code>
+                                </pre>
+                </td>
+            </tr>
+            <tr>
+                <td>Get the list of all users</td>
+                <td>/users</td>
+                <td>GET</td>
+                <td>
+                    None
+                <td>
+                    A JSON object containing data about all users (ID, FavoriteMovies, Username, Password, Email, Birthday)
+                </td>
+                </td>
+            </tr>
+            <tr>
+                <td>Get the data about a user by username</td>
+                <td>/users/:username</td>
+                <td>GET</td>
+                <td>
+                    None
+                <td>
+                    A JSON object containing data about a single user by username (ID, FavoriteMovies, Username, Password, Email, Birthday)
+                </td>
+                </td>
+            </tr>
+            <tr>
+                <td>Add a new user</td>
                 <td>/users</td>
                 <td>POST</td>
                 <td>
-                    A JSON object holding data about the user to add, structured like:
+                    A JSON object containing data about a new user to add (Username, Password, Email, Birthday), structured like:
                     <pre>
                     <code>
                     {
-                    "name": Jane Doe
-                    "favoriteMovies":[]
+                    "Username": Jane Doe,
+                    "Password": Janedoe,
+                    "Email": janedoe@gmail.com
                     }
                 </code>
                 </pre>
                 <td>
-                    A JSON object holding data about the user that was added, including an ID:
+                    A JSON object containing data about the new user that was added (ID, FavoriteMovies, Username, Password, Email, Birthday):
                     <pre>
                     <code>
                     {
-                    "id": 1,
-                    "name": Jane Doe
-                    "favoriteMovies":[]
+                    "ID": 1,
+                    "Username": Jane Doe,
+                    "Password": Janedoe,
+                    "Email": janedoe@gmail.com,
+                    "FavoriteMovies":[]
                     }
                     </code>
                     </pre>
@@ -135,32 +184,32 @@
                 </td>
             </tr>
             <tr>
-                <td>Allow users to update their user info (username)</td>
-                <td>/users/[id]</td>
+                <td>Update user info</td>
+                <td>/users/:username</td>
                 <td>PUT</td>
-                <td>None</td>
-                <td>a text message indicating the user that was updated</td>
+                <td>A JSON object containing the updated data of the user (Username, Password, Email, Birthday)</td>
+                <td>A JSON object containing the updated data of the user (FavoriteMovies, Username, Password, Email, Birthday)</td>
             </tr>
             <tr>
-                <td>Allow users to add a movie to their list of favorites</td>
-                <td>/users/[id]/[movies]/[movieID]</td>
+                <td>Delete an existing user</td>
+                <td>/users/:username</td>
+                <td>DELETE</td>
+                <td>None</td>
+                <td>A text message indicating that the user has been deleted</td>
+            </tr>
+            <tr>
+                <td>Add favorite movies to the list of favorites</td>
+                <td>/users/:username/movies/:movieID</td>
                 <td>POST</td>
-                <td>A JSON object holding data about the movie to add to list of favorites</td>
-                <td>A text message indicating that a movie has been added </td>
+                <td>A JSON object holding data about the movie to add to the list of favorites</td>
+                <td>A JSON object containing the updated data of the users favorite movie and a text message indicating that a movie has been added. </td>
             </tr>
             <tr>
-                <td>Allow users to remove a movie from their list of favorites</td>
-                <td>/users/[id]/[movies]/[movieID]</td>
+                <td>Delete favorite movies from the list of favorites</td>
+                <td>/users/:username/movies/:movieID</td>
                 <td>DELETE</td>
                 <td>None</td>
-                <td>A text message indicating that a movie has been deleted </td>
-            </tr>
-            <tr>
-                <td>Allow existing users to deregister</td>
-                <td>/users/[id]</td>
-                <td>DELETE</td>
-                <td>None</td>
-                <td>A text message indicating whether the user was successfully removed</td>
+                <td>A text message indicating that a favorite movie has been deleted from the list of favorites </td>
             </tr>
         </tbody>
     </table>
