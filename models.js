@@ -1,32 +1,6 @@
 const mongoose = require('mongoose'),
     bcrypt = require('bcrypt');
 
-const UserSchema = new mongoose.Schema({
-    googleId: {
-        type: String,
-        required: true
-    },
-    displayName: {
-        type: String,
-        required: true
-    },
-    firstName: {
-        type: String,
-        required: true
-    },
-    lastName: {
-        type: String,
-        required: true
-    },
-    image: {
-        type: String
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    }
-});
-
 let movieSchema = mongoose.Schema({
     Title: { type: String, required: true },
     Description: { type: String, required: true },
@@ -64,5 +38,3 @@ let User = mongoose.model('User', userSchema);
 
 module.exports.Movie = Movie;
 module.exports.User = User;
-module.exports = mongoose.model('User', UserSchema)
-
