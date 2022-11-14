@@ -29,9 +29,15 @@ app.use(
   })
 );
 
+app.all("/*", function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
+
 let allowedOrigins = ['http://localhost:8080', 'https://myflix-firstapi-app.herokuapp.com/', 'http://localhost:1234'];
 
-app.use(
+/* app.use(
     cors({
         origin: (origin, callback) => {
             if (!origin) return callback(null, true);
@@ -43,7 +49,7 @@ app.use(
             return callback(null, true);
         }
     })
-);
+); */
 
 let auth = require('./auth')(app);
 const passport = require('passport');
