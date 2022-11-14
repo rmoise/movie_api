@@ -23,21 +23,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const cors = require('cors');
 // app.use(cors());
+
+const allowedOrigins = [
+    'http://localhost:8080',
+    'https://api.themoviedb.org/3',
+    'https://myflix-firstapi-app.herokuapp.com/',
+    'http://localhost:1234'
+];
+
 app.use(
-  cors({
-    origin: "*"
-  })
-);
-
-app.all("/*", function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next();
-});
-
-let allowedOrigins = ['http://localhost:8080', 'https://myflix-firstapi-app.herokuapp.com/', 'http://localhost:1234'];
-
-/* app.use(
     cors({
         origin: (origin, callback) => {
             if (!origin) return callback(null, true);
@@ -49,7 +43,7 @@ let allowedOrigins = ['http://localhost:8080', 'https://myflix-firstapi-app.hero
             return callback(null, true);
         }
     })
-); */
+);
 
 let auth = require('./auth')(app);
 const passport = require('passport');
