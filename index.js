@@ -26,8 +26,7 @@ const cors = require('cors');
 
 const allowedOrigins = [
     'http://localhost:8080',
-    'https://api.themoviedb.org/3',
-    'https://www.themoviedb.org/',
+    'https://www.themoviedb.org/t/p/w1280/',
     'https://myflix-firstapi-app.herokuapp.com/',
     'http://localhost:1234'
 ];
