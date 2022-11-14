@@ -22,9 +22,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const cors = require('cors');
-// app.use(cors());
+app.use(cors());
 
-const allowedOrigins = [
+/* const allowedOrigins = [
     'http://localhost:8080',
     'https://api.themoviedb.org/3',
     'https://myflix-firstapi-app.herokuapp.com/',
@@ -43,7 +43,7 @@ app.use(
             return callback(null, true);
         }
     })
-);
+); */
 
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*'); // or specify your domain i.e. https://localhost.com
