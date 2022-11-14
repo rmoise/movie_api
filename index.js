@@ -27,6 +27,7 @@ const cors = require('cors');
 let allowedOrigins = [
     'http://localhost:8080',
     'https://image.tmdb.org/t/p/w1280/',
+    'https://www.themoviedb.org/t/p/w1280/',
     'https://www.themoviedb.org',
     'https://myflix-firstapi-app.herokuapp.com',
     'http://localhost:1234'
@@ -53,7 +54,7 @@ app.use((req, res, next) => {
 
 app.get('/t/p/w1280', (req, res) => {
   request(
-    { url: 'https://image.tmdb.org/t/p/w1280/' },
+    { url: 'https://www.themoviedb.org/t/p/w1280/' },
     (error, response, body) => {
       if (error || response.statusCode !== 200) {
         return res.status(500).json({ type: 'error', message: err.message });
