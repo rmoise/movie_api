@@ -23,15 +23,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const cors = require('cors');
 // app.use(cors());
+app.use(
+  cors({
+    origin: "*"
+  })
+);
 
-let allowedOrigins = [
-    'http://localhost:8080',
-    'https://www.themoviedb.org/t/p/w1280/fa0RDkAlCec0STeMNAhPaF89q6U.jpg',
-    'https://www.themoviedb.org/t/p/w1280/',
-    'https://www.themoviedb.org',
-    'https://myflix-firstapi-app.herokuapp.com',
-    'http://localhost:1234'
-];
+let allowedOrigins = ['http://localhost:8080', 'https://myflix-firstapi-app.herokuapp.com/', 'http://localhost:1234'];
 
 app.use(
     cors({
