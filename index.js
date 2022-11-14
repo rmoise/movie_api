@@ -47,24 +47,6 @@ app.use(
     })
 );
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
-
-app.get('/t/p/w1280', (req, res) => {
-  request(
-    { url: 'https://www.themoviedb.org/t/p/w1280/' },
-    (error, response, body) => {
-      if (error || response.statusCode !== 200) {
-        return res.status(500).json({ type: 'error', message: err.message });
-      }
-
-      res.json(JSON.parse(body));
-    }
-  )
-});
-
 let auth = require('./auth')(app);
 const passport = require('passport');
 require('./passport');
