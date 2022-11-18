@@ -7,7 +7,7 @@
     <img src="img/logo-readme.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h1 align="center">REST API - myFlix. Technical Case Study</h1>
+  <h1 align="center">REST API - myFlix - Technical Case Study</h1>
 
   <p align="center">
     <a href="https://github.com/rmoise/myFlix_api/issues">Report Bug</a>
