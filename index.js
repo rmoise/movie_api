@@ -24,7 +24,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const cors = require('cors');
 // app.use(cors());
 
-const allowedOrigins = ['http://localhost:8080', 'https://myflix-firstapi-app.herokuapp.com', 'http://localhost:1234', 'https://myflix-movie-client-react.netlify.app'];
+const allowedOrigins = [
+    'http://localhost:8080',
+    'http://localhost:4200',
+    'https://myflix-firstapi-app.herokuapp.com',
+    'http://localhost:1234',
+    'https://myflix-movie-client-react.netlify.app'
+];
 
 app.use(
     cors({
