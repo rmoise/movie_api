@@ -30,7 +30,7 @@ const allowedOrigins = [
     'https://myflix-firstapi-app.herokuapp.com',
     'http://localhost:1234',
     'https://myflix-movie-client-react.netlify.app',
-    'https://rmoise.github.io/myFlix-Angular-client/welcome'
+    'https://rmoise.github.io'
 ];
 
 app.use(
